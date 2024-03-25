@@ -27,7 +27,12 @@ def is_standard_file(file):
 
 def read_csv_head(file_path, max_lines=5):
     with open(file_path, "r") as f:
-        head_lines = [next(f) for _ in range(max_lines)]
+        head_lines = []
+        for _ in range(max_lines):
+            line = f.readline()
+            if not line:
+                break
+            head_lines.append(line)
     return ''.join(head_lines)
 
 
