@@ -3,17 +3,19 @@ import sys
 
 
 def is_python_file(file):
-    return file.endswith(".py")
+    return file.endswith(".py") or file.endswith(".ipynb") or file.endswith(".sh")
 
 def is_markdown_file(file):
     return file.endswith(".md") or 'README' in file
 
 def is_data_file(file):
-    return file.endswith(".csv") or file.endswith(".txt")
-
+    return file.endswith(".csv") or file.endswith(".txt") or file.endswith(".json") or file.endswith(".tsv")
 
 def is_virtual_env(dir_name):
-    return "venv" in dir_name or ".venv" in dir_name
+    if "venv" in dir_name or ".venv" in dir_name:
+        return True
+    elif os.path.exists(os.path.join(dir_name, "bin")):
+        return True
 
 
 def is_compiled_file(file):
@@ -23,6 +25,7 @@ def is_compiled_file(file):
 def is_standard_file(file):
     standard_files = [".gitignore", "LICENSE", "pyproject.toml"]
     return file in standard_files
+
 
 
 def read_csv_head(file_path, max_lines=5):
