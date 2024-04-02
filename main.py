@@ -3,7 +3,7 @@ import sys
 
 
 def is_python_file(file):
-    return file.endswith(".py") or file.endswith(".ipynb") or file.endswith(".sh")
+    return file.endswith(".py") or file.endswith(".sh")
 
 def is_markdown_file(file):
     return file.endswith(".md") or 'README' in file
@@ -39,7 +39,7 @@ def read_csv_head(file_path, max_lines=5):
     return ''.join(head_lines)
 
 
-def generate_repository_summary(input_path, output_path, max_lines=20):
+def generate_repository_summary(input_path, output_path, max_lines=5):
     summary = "Project Structure:\n"
 
     for root, dirs, files in os.walk(input_path):
