@@ -35,13 +35,17 @@ def read_csv_head(file_path, max_lines=5):
     return ''.join(head_lines)
 
 def read_head(file_path, max_lines=5):
-    lines = []
+
     with open(file_path, "r") as f:
-        for _ in range(max_lines):
-            line = f.readline()
-            if not line:
-                break  # Stop reading if end of file is reached
-            lines.append(line)
+        if max_lines is None:
+            lines = f.readlines()  # Read all lines if max_lines is None
+        else:
+            lines = []
+            for _ in range(max_lines):
+                line = f.readline()
+                if not line:
+                    break  # Stop reading if end of file is reached
+                lines.append(line)
     return ''.join(lines)
 
 def generate_repository_summary(input_path, output_path, max_source_lines=5, max_data_lines=5, exclude_dirs=None):
@@ -91,7 +95,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("input_path", help="Path to the repository")
     parser.add_argument("output_path", nargs='?', default=None, help="Path to the output file, if None then print to console")
-    parser.add_argument("--max_source_lines", default=5, type=int, help="Maximum number of lines to print from source code files")
+    parser.add_argument("--max_source_lines", default=None, type=int, help="Maximum number of lines to print from source code files")
     default_excluded_dirs = ["venv", ".venv", ".git", "__pycache__", '.idea', '.vscode', '.pytest_cache']
     parser.set_defaults(exclude_dirs=default_excluded_dirs)
     parser.add_argument("--exclude_dirs", default=default_excluded_dirs, nargs="+", help="Directories to exclude from the summary")
