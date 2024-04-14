@@ -96,7 +96,7 @@ if __name__ == "__main__":
     parser.add_argument("input_path", help="Path to the repository")
     parser.add_argument("output_path", nargs='?', default=None, help="Path to the output file, if None then print to console")
     parser.add_argument("--max_source_lines", default=None, type=int, help="Maximum number of lines to print from source code files")
-    default_excluded_dirs = ["venv", ".venv", ".git", "__pycache__", '.idea', '.vscode', '.pytest_cache']
+    default_excluded_dirs = ["venv", ".venv", ".git", "__pycache__", '.idea', '.vscode', '.pytest_cache', 'wandb']
     parser.set_defaults(exclude_dirs=default_excluded_dirs)
     parser.add_argument("--exclude_dirs", default=default_excluded_dirs, nargs="+", help="Directories to exclude from the summary")
     args = parser.parse_args()
