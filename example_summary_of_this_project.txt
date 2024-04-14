@@ -125,7 +125,7 @@ File: README.md
 ```python
 # PyProjectSynopsis
 
-PyProjectSynopsis is a Python script that generates comprehensive summaries of Python projects for Large Language Models (LLMs). It provides a concise overview of the project structure, source code, dependencies, and data files, making it easier for LLMs to understand and analyze the codebase.
+PyProjectSynopsis is a Python script that generates comprehensive summaries of Python projects for Large Language Models (LLMs). It provides a concise summary of the project structure, source code, dependencies, and data files, making it easier for LLMs to understand and analyze the codebase.
 
 ## Features
 

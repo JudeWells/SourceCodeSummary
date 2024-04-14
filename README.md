@@ -1,6 +1,6 @@
-# SourceCodeOverview
+# SourceCodeSummary
 
-SourceCodeOverview is a Python script that generates comprehensive summaries of Python projects for Large Language Models (LLMs). It provides a concise overview of the project structure, source code, dependencies, and data files, making it easier for LLMs to understand and analyze the codebase.
+SourceCodeSummary is a Python script that generates comprehensive summaries of Python projects for Large Language Models (LLMs). It provides a concise summary of the project structure, source code, dependencies, and data files, making it easier for LLMs to understand and analyze the codebase.
 
 ## Features
 
@@ -15,7 +15,7 @@ SourceCodeOverview is a Python script that generates comprehensive summaries of 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/judewells/SourceCodeOverview.git
+git clone https://github.com/judewells/SourceCodeSummary.git
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ git clone https://github.com/judewells/SourceCodeOverview.git
 To generate a summary of a Python project, run the following command:
 
 ```bash
-python overview.py <input_path> <output_path>
+python summary.py <input_path> <output_path>
 ```
 
 - `<input_path>`: Path to the directory containing the Python project you want to summarize.
@@ -32,7 +32,7 @@ python overview.py <input_path> <output_path>
 For example:
 
 ```bash
-python overview.py /path/to/python/project /path/to/output/summary.txt
+python summary.py /path/to/python/project /path/to/output/summary.txt
 ```
 
 The script will generate a summary of the Python project and save it to the specified output file.
