@@ -11,10 +11,10 @@ def is_data_file(file):
     file_endings = [".csv", ".txt", ".json", ".tsv", ".xml", ".yaml"]
     return any([file.endswith(ending) for ending in file_endings])
 
-def is_virtual_env(dir_name):
-    if "venv" in dir_name or ".venv" in dir_name:
+def is_virtual_env(dir_name, base_dir):
+    if "venv" in dir_name or ".venv" in dir_name:# or 'Venv' in dir_name:
         return True
-    elif os.path.exists(os.path.join(dir_name, "bin")):
+    elif os.path.exists(os.path.join(base_dir, dir_name, "bin")):
         return True
 
 def is_compiled_file(file):
@@ -53,7 +53,7 @@ def generate_repository_summary(input_path, output_path, max_source_lines=5, max
     summary = "Project Structure:\n"
 
     for root, dirs, files in os.walk(input_path):
-        dirs[:] = [d for d in dirs if d not in exclude_dirs and not is_virtual_env(d)]
+        dirs[:] = [d for d in dirs if d not in exclude_dirs and not is_virtual_env(d, input_path)]
 
         level = root.replace(input_path, '').count(os.sep)
         indent = ' ' * 4 * level
