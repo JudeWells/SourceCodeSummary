@@ -73,7 +73,7 @@ def generate_repository_summary(input_path, output_path, max_source_lines=5, max
                 content = read_head(file_path, max_source_lines)
                 file_type = "python" if is_python_file(file) else "markdown"
                 summary += f"```{file_type}\n{content}\n```\n"
-                summary += "\n" + "-" * 50 + "\n"
+                summary += "\n" + "<END OF FILE>" + "\n"
 
             elif is_data_file(file):
                 summary += f"\nData File: {rel_path}\n"
@@ -83,7 +83,7 @@ def generate_repository_summary(input_path, output_path, max_source_lines=5, max
                 else:
                     content = read_head(file_path, max_data_lines)
                     summary += f"```\n{content}\n...\n```\n"
-                summary += "\n" + "-" * 50 + "\n"
+                summary += "\n" + "<END OF FILE>" + "\n"
 
     if output_path:
         with open(output_path, "w") as output_file:
