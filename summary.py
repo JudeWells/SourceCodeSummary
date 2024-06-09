@@ -2,14 +2,14 @@ import os
 from argparse import ArgumentParser
 
 def is_source_file(file):
-    filetypes = [".py", ".sh", ".c", ".h", ".pl"]
+    filetypes = [".py", ".sh", ".c", ".h", ".pl", ".yaml"]
     return file.endswith(tuple(filetypes))
 
 def is_markdown_file(file):
     return file.endswith(".md") or 'README' in file
 
 def is_data_file(file):
-    file_endings = [".csv", ".txt", ".json", ".tsv", ".xml", ".yaml"]
+    file_endings = [".csv", ".txt", ".json", ".tsv", ".xml"]
     return any([file.endswith(ending) for ending in file_endings])
 
 def is_virtual_env(dir_name, base_dir):
