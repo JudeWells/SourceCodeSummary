@@ -1,8 +1,9 @@
 import os
 from argparse import ArgumentParser
 
-def is_python_file(file):
-    return file.endswith(".py") or file.endswith(".sh")
+def is_source_file(file):
+    filetypes = [".py", ".sh", ".c", ".h", ".pl"]
+    return file.endswith(tuple(filetypes))
 
 def is_markdown_file(file):
     return file.endswith(".md") or 'README' in file
@@ -68,10 +69,10 @@ def generate_repository_summary(input_path, output_path, max_source_lines=5, max
 
             summary += f"{indent}  {file}\n"
 
-            if is_python_file(file) or is_markdown_file(file):
+            if is_source_file(file) or is_markdown_file(file):
                 summary += f"\nFile: {rel_path}\n"
                 content = read_head(file_path, max_source_lines)
-                file_type = "python" if is_python_file(file) else "markdown"
+                file_type = "source" if is_source_file(file) else "markdown"
                 summary += f"```{file_type}\n{content}\n```\n"
                 summary += "\n" + "<END OF FILE>" + "\n"
 
